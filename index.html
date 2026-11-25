@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đảo Xu Vàng — Phiêu lưu cùng cáo nhỏ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <!-- ==================== SHARED TOP NAVBAR (Home / Select / Shop / Rank / Complete) ==================== -->
+    <header id="main-navbar" class="navbar">
+      <div class="nav-left" data-nav="home" role="button" tabindex="0">
+        <img src="assets/home/imgGroup-b7b4a.svg" alt="Xu vàng" class="brand-coin" />
+        <span class="brand-title">ĐẢO XU VÀNG</span>
+      </div>
+
+      <nav class="nav-links" aria-label="Điều hướng chính">
+        <button class="nav-tab active" data-nav="home">Trang chủ</button>
+        <button class="nav-tab" data-nav="select">Chọn màn</button>
+        <button class="nav-tab" data-nav="shop">Cửa hàng</button>
+        <button class="nav-tab" data-nav="leaderboard">Xếp hạng</button>
+      </nav>
+
+      <div class="nav-right">
+        <div class="wallet-pill" title="Tổng xu hiện có">
+          <img src="assets/home/imgGroup1-ada29.svg" alt="Xu" class="wallet-coin" />
+          <span id="wallet-balance">1.250</span>
+        </div>
+        <button id="btn-settings" class="settings-btn" title="Cài đặt" aria-label="Cài đặt">
+          <img src="assets/home/imgGroup2-24d91.svg" alt="Cài đặt" />
+        </button>
+      </div>
+      <div class="nav-divider"></div>
+    </header>
+
+    <!-- ==================== GAMEPLAY TOP NAVBAR ==================== -->
+    <header id="play-navbar" class="navbar play-navbar hidden">
+      <div class="nav-left" data-nav="home" role="button" tabindex="0">
+        <img src="assets/forest/imgGroup-1a598.svg" alt="Xu vàng" class="brand-coin small" />
+        <span class="brand-title small">ĐẢO XU VÀNG</span>
+      </div>
+
+      <button id="btn-back-select" class="play-back-btn" title="Quay lại chọn màn">
+        <img src="assets/forest/imgGroup1-e6c65.svg" alt="Quay lại" class="back-icon" />
+        <span id="play-level-label">MÀN 01 &nbsp;/&nbsp; RỪNG XANH</span>
+      </button>
+
+      <div class="play-nav-right">
+        <div class="timer-pill" id="timer-pill">
+          <img src="assets/forest/imgGroup2-7d4ce.svg" alt="Đồng hồ" />
+          <span id="hud-timer">01:30</span>
+        </div>
+        <button id="btn-pause" class="pause-btn">
+          <img src="assets/forest/imgGroup3-fa739.svg" alt="Tạm dừng" />
+          <span>Tạm dừng</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ==================== SCREEN 1: TRANG CHỦ ==================== -->
+    <main id="screen-home" class="screen screen-home">
+      <div class="home-content">
+        <div class="home-left">
+          <div class="hero-badge">PHIÊU LƯU NGAY TRÊN TRÌNH DUYỆT</div>
+          <h1 class="hero-title">
+            ĐẢO NHỎ.<br />KHO BÁU LỚN.
+          </h1>
+          <p class="hero-subtitle">
+            Chạy thật vui. Nhặt thật nhiều! Cùng cáo nhỏ khám phá<br />
+            những hòn đảo và gom trọn những đồng xu vàng.
+          </p>
+
+          <div class="hero-actions">
+            <button id="btn-play-now" class="btn-primary-gold">
+              <img src="assets/home/imgGroup3-e7b86.svg" alt="" class="play-triangle" />
+              <span>CHƠI NGAY</span>
+            </button>
+            <button id="btn-go-select" class="btn-secondary-outline">
+              Chọn màn chơi
+            </button>
+          </div>
+
+          <p class="hero-hint">Không cần cài đặt &nbsp;·&nbsp; Dùng bàn phím để chơi</p>
+
+          <div class="home-stats">
+            <div class="stat-card">
+              <div class="stat-value">03</div>
+              <div class="stat-label">Vùng đất</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="home-best-record">0 xu</div>
+              <div class="stat-label">Kỷ lục của bạn</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="home-player-level">01</div>
+              <div class="stat-label">Cấp người chơi</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-right">
+          <div class="hero-island-stage" id="hero-island-stage">
+            <img src="assets/home/imgClouds-1a130.svg" alt="" class="layer-clouds" />
+            <img src="assets/home/imgIsland-90690.svg" alt="Đảo rừng xanh" class="layer-island" />
+            <img src="assets/home/imgTreeBackLeft-9054f.svg" alt="" class="layer-tree-bl" />
+            <img src="assets/home/imgTreeRight-846cb.svg" alt="" class="layer-tree-r" />
+            <img src="assets/home/imgTreeFrontLeft-f3598.svg" alt="" class="layer-tree-fl" />
+            <img src="assets/home/imgCoin1-e9ece.svg" alt="" class="layer-coin c1" />
+            <img src="assets/home/imgCoin2-c4ecb.svg" alt="" class="layer-coin c2" />
+            <img src="assets/home/imgCoin3-48d1c.svg" alt="" class="layer-coin c3" />
+            <img src="assets/home/imgCoin4-aea78.svg" alt="" class="layer-coin c4" />
+            <img src="assets/home/imgCoin5-476e0.svg" alt="" class="layer-coin c5" />
+            <img src="assets/home/imgCoin6-fa824.svg" alt="" class="layer-coin c6" />
+            <img src="assets/home/imgFox-0263d.svg" alt="Cáo nhỏ" class="layer-fox" />
+            <img src="assets/home/imgSparkles-501c2.svg" alt="" class="layer-sparkles" />
+          </div>
+          <div class="world-pill">01 &nbsp;/&nbsp; RỪNG XANH</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ==================== SCREEN 2: CHỌN MÀN CHƠI ==================== -->
+    <main id="screen-select" class="screen screen-select hidden">
+      <div class="select-content">
+        <h2 class="page-title">CHỌN CHUYẾN PHIÊU LƯU</h2>
+        <p class="page-subtitle">Ba vùng đất, ba thử thách. Thu thập đủ xu để mở khóa hòn đảo tiếp theo.</p>
+
+        <div class="level-grid">
+          <!-- Card 01: Rừng xanh -->
+          <article class="level-card card-forest" data-level="1">
+            <div class="card-badges">
+              <span class="badge-num">01</span>
+              <span class="badge-diff">DỄ</span>
+            </div>
+            <div class="card-art art-forest">
+              <img src="assets/select/imgClouds-cef75.svg" alt="" class="s-clouds" />
+              <img src="assets/select/imgIsland-8a3e9.svg" alt="Rừng xanh" class="s-island" />
+              <img src="assets/select/imgTreeBackLeft-980e6.svg" alt="" class="s-tree-bl" />
+              <img src="assets/select/imgTreeRight-f7c2d.svg" alt="" class="s-tree-r" />
+              <img src="assets/select/imgTreeFrontLeft-32480.svg" alt="" class="s-tree-fl" />
+              <img src="assets/select/imgCoin1-17cfd.svg" alt="" class="s-coin sc1" />
+              <img src="assets/select/imgCoin2-973ca.svg" alt="" class="s-coin sc2" />
+              <img src="assets/select/imgCoin3-0b7f4.svg" alt="" class="s-coin sc3" />
+              <img src="assets/select/imgFox-7ce61.svg" alt="Cáo nhỏ" class="s-fox" />
+              <img src="assets/select/imgSparkles-ca76d.svg" alt="" class="s-sparkles" />
+            </div>
+            <h3 class="card-title">Rừng xanh</h3>
+            <p class="card-desc">Làm quen đường chạy và nhặt những xu đầu tiên.</p>
+            <p class="card-goal">MỤC TIÊU &nbsp;50 xu &nbsp;&nbsp;/&nbsp;&nbsp; 90 giây</p>
+            <button class="card-btn unlocked" data-play-level="1">CHƠI MÀN 01</button>
+          </article>
+
+          <!-- Card 02: Sa mạc -->
+          <article class="level-card card-desert" data-level="2">
+            <div class="card-badges">
+              <span class="badge-num">02</span>
+              <span class="badge-diff">VỪA</span>
+            </div>
+            <div class="card-art art-desert">
+              <img src="assets/select/imgMesaRock-2bc60.svg" alt="" class="d-rock" />
+              <img src="assets/select/imgMesaSand-b2272.svg" alt="Sa mạc" class="d-sand" />
+              <img src="assets/select/imgLoopingWalkway-b3f40.svg" alt="" class="d-path" />
+              <img src="assets/select/imgCactusLeft-ac8be.svg" alt="" class="d-cactus-l" />
+              <img src="assets/select/imgCactusBack-8b7bc.svg" alt="" class="d-cactus-b" />
+              <img src="assets/select/imgCactusRight-2cee3.svg" alt="" class="d-cactus-r" />
+              <img src="assets/select/imgSandstonePillarBack-3930d.svg" alt="" class="d-pillar-b" />
+              <img src="assets/select/imgSandstonePillarRight-19033.svg" alt="" class="d-pillar-r" />
+              <img src="assets/select/imgCoin01-17faf.svg" alt="" class="d-coin dc1" />
+              <img src="assets/select/imgCoin04-10860.svg" alt="" class="d-coin dc2" />
+              <img src="assets/select/imgCoin07-155fa.svg" alt="" class="d-coin dc3" />
+              <img src="assets/select/imgFox-7ce61.svg" alt="Cáo nhỏ" class="d-fox" />
+            </div>
+            <h3 class="card-title">Sa mạc</h3>
+            <p class="card-desc">Tránh xương rồng trên những đồi cát nóng bỏng.</p>
+            <p class="card-goal">MỤC TIÊU &nbsp;75 xu &nbsp;&nbsp;/&nbsp;&nbsp; 100 giây</p>
+            <button class="card-btn locked" id="btn-level-2" data-play-level="2">Hoàn thành màn 01 để mở</button>
+          </article>
+
+          <!-- Card 03: Đảo băng -->
+          <article class="level-card card-ice" data-level="3">
+            <div class="card-badges">
+              <span class="badge-num">03</span>
+              <span class="badge-diff">KHÓ</span>
+            </div>
+            <div class="card-art art-ice">
+              <img src="assets/select/imgIslandIce-7537b.svg" alt="Đảo băng" class="i-island" />
+              <img src="assets/select/imgSlipperyTrail-6eb3c.svg" alt="" class="i-trail" />
+              <img src="assets/select/imgRearPine-dd52b.svg" alt="" class="i-pine-b" />
+              <img src="assets/select/imgLeftPine-6976a.svg" alt="" class="i-pine-l" />
+              <img src="assets/select/imgRightPine-da79e.svg" alt="" class="i-pine-r" />
+              <img src="assets/select/imgIceCrystalLeft-5cef7.svg" alt="" class="i-crys-l" />
+              <img src="assets/select/imgIceCrystalBack-03b47.svg" alt="" class="i-crys-b" />
+              <img src="assets/select/imgIceCrystalRight-ff77e.svg" alt="" class="i-crys-r" />
+              <img src="assets/select/imgCoin7-629ec.svg" alt="" class="i-coin ic1" />
+              <img src="assets/select/imgCoin11-a96da.svg" alt="" class="i-coin ic2" />
+              <img src="assets/select/imgFoxAdventurer-c3b8d.svg" alt="Cáo nhỏ" class="i-fox" />
+              <img src="assets/select/imgFloatingSnowflakes-0dfbc.svg" alt="" class="i-snow" />
+            </div>
+            <h3 class="card-title">Đảo băng</h3>
+            <p class="card-desc">Giữ vững bước chân trên con đường băng trượt.</p>
+            <p class="card-goal">MỤC TIÊU &nbsp;100 xu &nbsp;&nbsp;/&nbsp;&nbsp; 120 giây</p>
+            <button class="card-btn locked" id="btn-level-3" data-play-level="3">Hoàn thành màn 02 để mở</button>
+          </article>
+        </div>
+
+        <p class="select-tip">Mẹo: Dùng WASD hoặc phím mũi tên để di chuyển, Space để nhảy qua chướng ngại.</p>
+      </div>
+    </main>
+
+    <!-- ==================== SCREEN 3: CỬA HÀNG ==================== -->
+    <main id="screen-shop" class="screen screen-sub hidden">
+      <div class="sub-content">
+        <h2 class="page-title">CỬA HÀNG ĐẢO XU</h2>
+        <p class="page-subtitle">Dùng xu vàng bạn nhặt được để nâng cấp kỹ năng cho cáo nhỏ.</p>
+        <div class="shop-grid" id="shop-grid"></div>
+      </div>
+    </main>
+
+    <!-- ==================== SCREEN 4: XẾP HẠNG ==================== -->
+    <main id="screen-leaderboard" class="screen screen-sub hidden">
+      <div class="sub-content">
+        <h2 class="page-title">BẢNG THÀNH TÍCH</h2>
+        <p class="page-subtitle">Kỷ lục tốt nhất của bạn qua từng vùng đất.</p>
+        <div class="leaderboard-grid" id="leaderboard-grid"></div>
+      </div>
+    </main>
+
+    <!-- ==================== SCREEN 5: MÀN CHƠI (GAMEPLAY) ==================== -->
+    <main id="screen-play" class="screen screen-play theme-forest hidden">
+      <div class="play-stage">
+        <!-- Left HUD -->
+        <aside class="hud-column hud-left">
+          <div class="hud-card hud-coins">
+            <div class="hud-label">XU ĐÃ NHẶT</div>
+            <div class="hud-coin-row">
+              <img src="assets/forest/imgGroup4-fded8.svg" alt="Xu" class="hud-coin-icon" />
+              <span class="hud-coin-value" id="hud-coin-text">0 / 50</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" id="hud-coin-bar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="hud-card hud-lives">
+            <div class="hud-label">LƯỢT SỐNG</div>
+            <div class="hearts-row">
+              <div class="hearts-icons" id="hud-hearts"></div>
+              <span class="hearts-text" id="hud-hearts-text">3 / 3</span>
+            </div>
+          </div>
+
+          <div class="hud-card hud-goal">
+            <div class="hud-label">MỤC TIÊU</div>
+            <div class="hud-goal-title" id="hud-goal-title">50 xu trong 90 giây</div>
+            <p class="hud-goal-desc" id="hud-goal-desc">Đi theo đường xu và<br />nhảy qua chướng ngại.</p>
+          </div>
+        </aside>
+
+        <!-- Center Isometric Canvas -->
+        <section class="canvas-wrapper">
+          <canvas id="game-canvas" width="760" height="580"></canvas>
+          <div id="floating-popups" class="floating-popups"></div>
+          <div class="remaining-pill" id="hud-remaining">Thêm 50 xu nữa là chiến thắng!</div>
+        </section>
+
+        <!-- Right HUD -->
+        <aside class="hud-column hud-right">
+          <div class="hud-card hud-adventure">
+            <div class="hud-label">CHUYẾN PHIÊU LƯU</div>
+            <div class="world-steps" id="hud-world-steps">
+              <div class="step-box active" data-step="1">01</div>
+              <span class="step-arrow">→</span>
+              <div class="step-box" data-step="2">02</div>
+              <span class="step-arrow">→</span>
+              <div class="step-box" data-step="3">03</div>
+            </div>
+            <div class="hud-world-name" id="hud-world-name">Rừng xanh · Dễ</div>
+          </div>
+
+          <div class="hud-card hud-tip" id="hud-tip-card">
+            <div class="hud-tip-label">MẸO NHỎ</div>
+            <p class="hud-tip-text" id="hud-tip-text">Giữ nhịp di chuyển,<br />đừng bỏ lỡ đường xu!</p>
+          </div>
+
+          <!-- Active Powerups indicator -->
+          <div class="hud-card hud-buffs hidden" id="hud-buffs">
+            <div class="hud-label">TRANG BỊ ĐANG BẬT</div>
+            <div id="hud-buffs-list" class="buffs-list"></div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- ==================== SCREEN 6: HOÀN THÀNH ==================== -->
+    <main id="screen-complete" class="screen screen-complete hidden">
+      <div class="complete-content">
+        <h2 class="complete-title" id="complete-title">GIỎI QUÁ! KHO BÁU ĐÃ ĐẦY.</h2>
+        <p class="complete-subtitle" id="complete-subtitle">Màn 01 · Rừng xanh &nbsp;/&nbsp; Hoàn thành</p>
+
+        <div class="complete-grid">
+          <div class="complete-left">
+            <div class="trophy-badge-wrap">
+              <div class="halo-outer"></div>
+              <div class="halo-inner"></div>
+              <div class="halo-core">
+                <img src="assets/complete/imgGroup3-4467c.svg" alt="Cúp chiến thắng" class="trophy-icon" />
+              </div>
+              <img src="assets/complete/imgGroup4-78c18.svg" alt="" class="star star-left" />
+              <img src="assets/complete/imgGroup5-f43db.svg" alt="" class="star star-top" />
+              <img src="assets/complete/imgGroup6-e74c0.svg" alt="" class="star star-right" />
+              <div class="new-record-pill" id="complete-record-badge">KỶ LỤC MỚI!</div>
+            </div>
+            <div class="reward-coins" id="complete-reward">+50 xu</div>
+          </div>
+
+          <div class="complete-right">
+            <div class="summary-card">
+              <div class="summary-heading">THÀNH TÍCH CỦA BẠN</div>
+              <div class="summary-row">
+                <span>Xu đã nhặt</span>
+                <strong id="comp-coins">50 / 50</strong>
+              </div>
+              <div class="summary-row">
+                <span>Thời gian hoàn thành</span>
+                <strong id="comp-time">01:14</strong>
+              </div>
+              <div class="summary-row">
+                <span>Tổng xu hiện có</span>
+                <strong id="comp-wallet">1.300</strong>
+              </div>
+            </div>
+
+            <div class="unlock-banner" id="comp-unlock-banner">
+              <div class="unlock-label" id="comp-unlock-label">ĐÃ MỞ KHÓA MÀN 02</div>
+              <div class="unlock-desc" id="comp-unlock-desc">Sa mạc · 75 xu / 100 giây</div>
+            </div>
+
+            <button class="btn-primary-gold full-width" id="btn-next-level">
+              KHÁM PHÁ SA MẠC &nbsp;→
+            </button>
+
+            <div class="complete-secondary-actions">
+              <button class="btn-secondary-outline" id="btn-replay">Chơi lại</button>
+              <button class="btn-secondary-outline" id="btn-to-select">Về chọn màn</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ==================== SHARED KEYBOARD FOOTER ==================== -->
+    <footer class="keyboard-footer">
+      <div class="footer-left">
+        <span class="footer-label">CÁCH CHƠI</span>
+        <div class="key-group">
+          <kbd class="keycap" data-key="KeyW">W</kbd>
+          <kbd class="keycap" data-key="KeyA">A</kbd>
+          <kbd class="keycap" data-key="KeyS">S</kbd>
+          <kbd class="keycap" data-key="KeyD">D</kbd>
+          <span class="key-desc">Di chuyển</span>
+        </div>
+        <div class="key-group">
+          <kbd class="keycap wide" data-key="Space">SPACE</kbd>
+          <span class="key-desc">Nhảy</span>
+        </div>
+        <div class="key-group">
+          <kbd class="keycap med" data-key="Escape">ESC</kbd>
+          <span class="key-desc">Tạm dừng</span>
+        </div>
+      </div>
+      <button id="btn-fullscreen" class="fullscreen-btn">
+        <img src="assets/home/imgGroup4-5dd79.svg" alt="" />
+        <span>Toàn màn hình</span>
+      </button>
+    </footer>
+
+    <!-- ==================== OVERLAYS / MODALS ==================== -->
+    <!-- Pause Modal -->
+    <div id="modal-pause" class="modal-backdrop hidden">
+      <div class="modal-card">
+        <h3 class="modal-title">TẠM DỪNG</h3>
+        <p class="modal-desc">Cáo nhỏ đang nghỉ chân một chút.</p>
+        <div class="modal-actions">
+          <button id="btn-resume" class="btn-primary-gold full-width">TIẾP TỤC CHƠI</button>
+          <button id="btn-pause-restart" class="btn-secondary-outline full-width">Chơi lại màn này</button>
+          <button id="btn-pause-select" class="btn-secondary-outline full-width">Về chọn màn</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="modal-gameover" class="modal-backdrop hidden">
+      <div class="modal-card">
+        <h3 class="modal-title danger" id="gameover-title">HẾT LƯỢT SỐNG!</h3>
+        <p class="modal-desc" id="gameover-desc">Đừng nản lòng, cáo nhỏ hãy thử lại nhé!</p>
+        <div class="gameover-stats">
+          <span>Xu đã nhặt: <strong id="go-coins">0 / 50</strong></span>
+        </div>
+        <div class="modal-actions">
+          <button id="btn-go-retry" class="btn-primary-gold full-width">THỬ LẠI NGAY</button>
+          <button id="btn-go-select" class="btn-secondary-outline full-width">Về chọn màn</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="modal-settings" class="modal-backdrop hidden">
+      <div class="modal-card">
+        <h3 class="modal-title">CÀI ĐẶT</h3>
+        <div class="setting-row">
+          <span>Âm thanh hiệu ứng (SFX)</span>
+          <input type="checkbox" id="toggle-sfx" checked />
+        </div>
+        <div class="setting-row">
+          <span>Mở khóa tất cả màn (Chế độ thử)</span>
+          <input type="checkbox" id="toggle-unlock-all" />
+        </div>
+        <div class="modal-actions">
+          <button id="btn-reset-save" class="btn-secondary-outline danger-text full-width">Đặt lại tiến trình</button>
+          <button id="btn-close-settings" class="btn-primary-gold full-width">ĐÓNG</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
